@@ -78,6 +78,7 @@ void rr(const vector<Process>& processes, int time_quantum) {
                   << " with turnaround time " << turnAroundTime[i] << " and normalized turnaround time " << normTurn[i] << "\n";
     }
 
+    writeTimelineToFile(timeline,current_time, "timeline.txt");
     // Printing the timeline for debugging purposes
     cout << "Timeline:\n";
     for (int p = 0; p < process_count; p++) {

@@ -1,6 +1,70 @@
 import streamlit as st
 import pandas as pd
 import subprocess
+import plotly.graph_objects as go
+
+# Function to read timeline.txt and convert to a 2D vector
+def read_timeline_file(filename):
+    timeline = []
+    with open(filename, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                row = []
+                for char in line:
+                    if char == '.':
+                        row.append(0)  # Assuming 0 represents empty slot
+                    elif char == '*':
+                        row.append(1)  # Assuming 1 represents filled slot
+                    else:
+                        # Handle unexpected characters if needed
+                        pass
+                timeline.append(row)
+    return timeline
+
+# Create a DataFrame for visualization
+def create_timeline_df(timeline):
+    data = []
+    for process_idx, process_timeline in enumerate(timeline):
+        for time_slot, value in enumerate(process_timeline):
+            if value == 1:
+                data.append({
+                    'Process': f'Process {process_idx + 1}',
+                    'Start': time_slot,
+                    'Finish': time_slot + 1
+                })
+    return data
+
+def trace(timeline):
+    # Generate the timeline DataFrame
+    timeline_data = create_timeline_df(timeline)
+
+    # Create a Gantt chart using Plotly
+    fig = go.Figure()
+
+    for process in timeline_data:
+        fig.add_trace(go.Bar(
+            x=[process['Finish'] - process['Start']],
+            y=[process['Process']],
+            base=[process['Start']],
+            orientation='h',
+            name=process['Process']
+        ))
+
+    # Update the layout of the chart
+    fig.update_layout(
+        title='CPU Scheduler Timeline',
+        xaxis_title='Time',
+        yaxis_title='Processes',
+        barmode='stack',
+        bargap=0.1,
+        bargroupgap=0,
+        showlegend=False
+    )
+
+    # Display the chart in Streamlit
+    st.title('CPU Scheduler Visualization')
+    st.plotly_chart(fig)
 
 # Title of the app
 st.title('CPU Scheduler - Select Scheduling Algorithm')
@@ -39,12 +103,9 @@ if st.button("Submit Algorithm"):
     
     # Run the C++ program
     result = subprocess.run(['../scheduler'], capture_output=True, text=True)
-    # Display the output from the C++ program
-    st.subheader("Algorithm Output")
-    st.text(result.stdout)
-    # Display any errors
-    st.subheader("Error Output")
-    st.text(result.stderr)
+    timeline=read_timeline_file('timeline.txt')
+    trace(timeline)
+    
 
 # Back button to return to the previous page
 if st.button("Back to Process Input"):

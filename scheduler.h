@@ -24,8 +24,7 @@ extern vector<vector<char> > timeline;
 
 void clear_timeline();
 void execute_algorithm(const string& algorithm_name, const vector<Process>& processes, Operation operation);
-void printTimeline(int idx);
-void printStats(int idx);
+void writeTimelineToFile(const vector<vector<char>>& timeline, int time, const string& filename);
 
 // Algorithm implementations
 void ag(const vector<Process>& processes);

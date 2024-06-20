@@ -50,6 +50,7 @@ void srt(const vector<Process>& processes) {
         }
     }
 
+    writeTimelineToFile(timeline,current_time, "timeline.txt");
     // Printing the timeline for debugging purposes
     cout << "Timeline:\n";
     for (int p = 0; p < process_count; p++) {

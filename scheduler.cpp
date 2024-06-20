@@ -33,12 +33,23 @@ void execute_algorithm(const string& algorithm_name, const vector<Process>& proc
     }
 }
 
-void printTimeline(int idx) {
-    // Function to print the timeline of processes
-    // Implementation to be added
-}
-
-void printStats(int idx) {
-    // Function to print the statistics of scheduling
-    // Implementation to be added
+void writeTimelineToFile(const vector<vector<char>>& timeline,int time, const string& filename) {
+    ofstream outFile(filename);
+    
+    if (!outFile) {
+        cerr << "Failed to open " << filename << endl;
+        return;
+    }
+    
+    for (const auto& process_timeline : timeline) {
+        for (size_t i = 0; i < time; ++i) {
+            outFile << process_timeline[i];
+            if (i != time - 1) {
+                outFile << " ";
+            }
+        }
+        outFile << "\n";
+    }
+    
+    outFile.close();
 }

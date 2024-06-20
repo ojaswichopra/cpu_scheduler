@@ -45,7 +45,7 @@ void fcfs(const vector<Process>& processes) {
         cout << "Process " << sorted_processes[i].process_id << " started at time " << time - serviceTime
                   << " and finished at time " << finishTime[i] << "\n";
     }
-
+    writeTimelineToFile(timeline,time, "timeline.txt");
     // Printing the timeline for debugging purposes
     cout << "Timeline:\n";
     for (int p = 0; p < process_count; p++) {
