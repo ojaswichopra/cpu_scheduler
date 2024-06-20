@@ -1,7 +1,5 @@
 # CPU Scheduler Project
 
-![CPU Scheduler](images/cpu_scheduler_frontend.png)
-
 ## Overview
 
 This project implements various CPU scheduling algorithms in C++ and provides an interactive frontend for users to input process details, select algorithms, and view scheduling outputs.
@@ -14,16 +12,12 @@ This project implements various CPU scheduling algorithms in C++ and provides an
 
 ## Frontend Screenshots
 
-### Adding Processes
 ![Adding Processes](images/add_processes.png)
 
-### Selecting Algorithms
 ![Selecting Algorithms](images/select_algorithms.png)
 
-### Timeline Visualization
 ![Timeline Visualization](images/timeline_visualization.png)
 
-### Statistics Visualization
 ![Statistics Visualization](images/statistics_visualization.png)
 
 ## Implemented Algorithms
