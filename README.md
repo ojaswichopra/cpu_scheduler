@@ -88,4 +88,5 @@ To run the project:
     cd Frontend
 4. Start the Streamlit application for the frontend.
    ```sh
+   pip install streamlit
    streamlit run landing.py
