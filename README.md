@@ -65,8 +65,16 @@ This project implements various CPU scheduling algorithms in C++ and provides an
 ## Usage
 
 To run the project:
-
-1. Compile the C++ files (`scheduler.cpp`, `fcfs.cpp`, etc.) using a C++ compiler.
-2. Start the Streamlit application for the frontend:
+1. Clone the project into your system.
+    ```sh
+    git clone https://github.com/ojaswichopra/cpu_scheduler.git
+    cd cpu_scheduler
+2. Compile the C++ files (`scheduler.cpp`, `fcfs.cpp`, etc.) using a C++ compiler.
+    ```sh
+   g++ -std=c++11 -o scheduler main.cpp scheduler.cpp fcfs.cpp rr.cpp sjf.cpp priority.cpp ag.cpp fbv.cpp hrrn.cpp srt.cpp ljf.cpp lrt.cpp
+3. Change into the Frontend directory.
+    ```sh
+    cd Frontend
+4. Start the Streamlit application for the frontend:
    ```sh
-   streamlit run frontend.py
+   streamlit run landing.py
