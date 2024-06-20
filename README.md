@@ -75,6 +75,6 @@ To run the project:
 3. Change into the Frontend directory.
     ```sh
     cd Frontend
-4. Start the Streamlit application for the frontend:
+4. Start the Streamlit application for the frontend.
    ```sh
    streamlit run landing.py
