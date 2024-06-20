@@ -13,7 +13,7 @@ void ag(const vector<Process>& processes) {
     vector<int> turnAroundTime(process_count);
     vector<double> normTurn(process_count);
     timeline.resize(process_count, vector<char>(100, '.')); // Assuming max timeline of 100 units
-
+    
     // Copy the processes to a local vector to sort them
     vector<Process> proc_queue = processes;
 
@@ -87,4 +87,15 @@ void ag(const vector<Process>& processes) {
         }
         cout << "\n";
     }
+
+    vector<vector<int>> stats(process_count,vector<int>(5));
+    for (int p=0;p<process_count;p++)
+    {
+        stats[p][0]=processes[p].arrival_time;
+        stats[p][1]=processes[p].burst_time;
+        stats[p][2]=finishTime[p];
+        stats[p][3]=turnAroundTime[p];
+        stats[p][4]=normTurn[p];
+    }
+    writeStatsToFile(stats, "stats.txt");
 }

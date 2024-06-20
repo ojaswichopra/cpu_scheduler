@@ -53,3 +53,24 @@ void writeTimelineToFile(const vector<vector<char>>& timeline,int time, const st
     
     outFile.close();
 }
+
+void writeStatsToFile(const vector<vector<int>>& stats, const string& filename) {
+    ofstream outFile(filename);
+    
+    if (!outFile) {
+        cerr << "Failed to open " << filename << endl;
+        return;
+    }
+    
+    for (const auto& entry : stats) {
+        for (size_t i = 0; i < 5; ++i) {
+            outFile << entry[i];
+            if (i != 4) {
+                outFile << " ";
+            }
+        }
+        outFile << "\n";
+    }
+    
+    outFile.close();
+}

@@ -60,7 +60,7 @@ void hrrn(const vector<Process>& processes) {
             current_time++;
         }
     }
-    
+
     writeTimelineToFile(timeline,current_time, "timeline.txt");
     // Printing the timeline for debugging purposes
     cout << "Timeline:\n";
@@ -70,5 +70,15 @@ void hrrn(const vector<Process>& processes) {
         }
         cout << "\n";
     }
+    vector<vector<int>> stats(process_count,vector<int>(5));
+    for (int p=0;p<process_count;p++)
+    {
+        stats[p][0]=processes[p].arrival_time;
+        stats[p][1]=processes[p].burst_time;
+        stats[p][2]=finishTime[p];
+        stats[p][3]=turnAroundTime[p];
+        stats[p][4]=normTurn[p];
+    }
+    writeStatsToFile(stats, "stats.txt");
 }
 
