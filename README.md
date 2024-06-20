@@ -23,6 +23,9 @@ This project implements various CPU scheduling algorithms in C++ and provides an
 ### Timeline Visualization
 ![Timeline Visualization](images/timeline_visualization.png)
 
+### Statistics Visualization
+![Statistics Visualization](images/statistics_visualization.png)
+
 ## Implemented Algorithms
 
 1. **First-Come First-Served (FCFS)**
