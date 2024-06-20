@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import json
 import subprocess
 
 # Initialize session state for storing process information
@@ -44,15 +43,7 @@ if st.button("Submit"):
             for process in st.session_state.process_list:
                 f.write(f"{process['Process ID']},{process['Arrival Time']},{process['Burst Time']},{process['Priority']}\n")
         
-        # Run the C++ program
-        result = subprocess.run(['../scheduler'], capture_output=True, text=True)
-        # st.switch_page("pages/algo.py")
-        # Display the output from the C++ program
-        st.subheader("Algorithm Output")
-        st.text(result.stdout)
-        # Display any errors
-        st.subheader("Error Output")
-        st.text(result.stderr)
+        st.switch_page("pages/algo.py")
     else:
         st.warning("No processes to submit!")
 

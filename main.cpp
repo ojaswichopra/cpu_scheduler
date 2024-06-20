@@ -1,10 +1,7 @@
 #include <bits/stdc++.h>
 #include "scheduler.h"
-#include <fstream>
-#include <nlohmann/json.hpp>
 
 using namespace std;
-using json = nlohmann::json;
 
 void parse(pair<string, vector<Process> > & algorithms) {
     ifstream inFile("processes.txt");
@@ -33,8 +30,19 @@ void parse(pair<string, vector<Process> > & algorithms) {
             cerr << "Invalid line in processes.txt: " << line << endl;
         }
     }
+    inFile.close();
+
+    ifstream algorithmFile("algo.txt");
+    if (!algorithmFile) {
+        cerr << "Failed to open algo.txt" << endl;
+        return;
+    }
     
-    algorithms=(make_pair("SRT", processes));
+    string algorithm;
+    algorithmFile >> algorithm; // Read the first word from the file
+    algorithmFile.close();
+    
+    algorithms=(make_pair(algorithm, processes));
 }
 
 int main() {
