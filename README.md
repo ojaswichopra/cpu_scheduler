@@ -1,4 +1,4 @@
-# CPU Scheduler Project
+# CPU Scheduler 
 
 ## Overview
 
@@ -61,6 +61,17 @@ This project implements various CPU scheduling algorithms in C++ and provides an
 10. **Longest Remaining Time (LRT)**
     - **Description:** Preemptively schedules the process with the longest remaining burst time.
     - **Use Case:** Similar to LJF but allows new processes with longer bursts to preempt currently running processes.
+   
+## Key Takeaways from the Project
+
+- Gained practical experience implementing and understanding various CPU scheduling algorithms.
+- Learned how different scheduling policies impact system performance metrics such as turnaround time and response time.
+- Developed skills in using Streamlit for interactive data visualization and user input handling.
+
+## Resources/References Used
+
+- YouTube playlist on CPU Scheduling Basics: [Link](https://www.youtube.com/playlist?list=PLBlnK6fEyqRitWSE_AyyySWfhRgyA-rHk)
+- Geek for Geeks.
 
 ## Usage
 
